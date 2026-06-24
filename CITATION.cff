@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: "Code for an m6A epitranscriptomic microarray dataset of human A549 cells infected with influenza A virus PR8"
+message: "If you use this code, please cite the associated Scientific Data descriptor and this software archive."
+type: software
+authors:
+  - family-names: Liu
+    given-names: Xueer
+  - family-names: Zhu
+    given-names: Lihong
+  - family-names: Lin
+    given-names: Runmin
+  - family-names: Sun
+    given-names: Qiaochu
+  - family-names: Li
+    given-names: Kangsheng
+  - family-names: Sheng
+    given-names: Jiangtao
+repository-code: "https://github.com/[TO_BE_FILLED]/iav-m6a-a549-pr8-scidata"
+license: MIT
+version: 0.1.0
+date-released: 2026-06-24

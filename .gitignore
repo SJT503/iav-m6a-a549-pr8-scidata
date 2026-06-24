@@ -1,0 +1,26 @@
+# Local data and generated binary outputs
+data/raw/
+data/processed/
+data/geo/
+*.xlsx
+*.xls
+*.xlsm
+*.txt.gz
+*.zip
+*.npz
+*.npy
+*.docx
+*.pdf
+*.png
+
+# Python/cache
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
