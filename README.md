@@ -4,7 +4,7 @@ This repository contains the analysis and figure-generation code used for the ma
 
 ## Dataset
 
-The dataset profiles human A549 cells under mock infection or influenza A virus PR8 infection for 24 h at MOI 0.5, with three biological replicates per condition, using the Arraystar Human mRNA&lncRNA Epitranscriptomic Microarray platform.
+The dataset profiles human A549 cells under mock infection or influenza A virus PR8 infection for 24 h at MOI 0.5, with three biological replicates per condition, using GEO platform GPL25759 (Agilent-085753 Arraystar Human Epitranscriptomic microarray).
 
 The raw and processed data are deposited in GEO. The GEO Series accession and reviewer-access token will be added after GEO curation.
 
