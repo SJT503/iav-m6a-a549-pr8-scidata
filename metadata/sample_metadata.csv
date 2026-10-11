@@ -1,0 +1,7 @@
+sample,geo_accession,condition,virus,moi,time_h,replicate,array_position,scan_image,raw_file,ip_constant_log2,sup_constant_log2,ip_minus_sup_log2,median_pct_modified,total_rna_ug,positive_spikein_pct_input,negative_spikein_pct_input
+MOCK_1,GSM9835854,mock,,,24,1,1_1,US10450393_S02-R100G100.tif,MOCK_1.txt,-10.652,-9.707,-0.945,35.9,20.7,82.1,1.65
+MOCK_2,GSM9835855,mock,,,24,2,1_2,US10450393_S01-R80G100.tif,MOCK_2.txt,-10.172,-9.502,-0.670,40.6,20.5,78.3,1.39
+MOCK_3,GSM9835856,mock,,,24,3,1_3,US10450393_S02-R100G100.tif,MOCK_3.txt,-10.850,-9.778,-1.072,32.9,19.3,67.8,1.18
+PR8_1,GSM9835857,PR8,A/Puerto Rico/8/1934 (H1N1),0.5,24,1,1_4,US10450393_S01-R80G100.tif,PR8_1.txt,-10.544,-9.745,-0.799,38.0,14.5,85.0,1.81
+PR8_2,GSM9835858,PR8,A/Puerto Rico/8/1934 (H1N1),0.5,24,2,2_1,US10450393_S02-R100G100.tif,PR8_2.txt,-10.315,-9.636,-0.679,40.3,13.4,78.1,2.15
+PR8_3,GSM9835859,PR8,A/Puerto Rico/8/1934 (H1N1),0.5,24,3,2_2,US10450393_S01-R100G100.tif,PR8_3.txt,-10.125,-9.685,-0.440,44.8,15.2,87.8,0.80

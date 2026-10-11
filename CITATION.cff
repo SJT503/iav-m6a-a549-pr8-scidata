@@ -15,7 +15,24 @@ authors:
     given-names: Kangsheng
   - family-names: Sheng
     given-names: Jiangtao
+    email: jtsheng@stu.edu.cn
+    affiliation: "College of Medicine, Shantou University, Shantou, Guangdong, China"
+    orcid: ""
+contact:
+  - family-names: Sheng
+    given-names: Jiangtao
+    email: jtsheng@stu.edu.cn
+    affiliation: "College of Medicine, Shantou University, Shantou, Guangdong, China"
 repository-code: "https://github.com/SJT503/iav-m6a-a549-pr8-scidata"
+url: "https://github.com/SJT503/iav-m6a-a549-pr8-scidata"
 license: MIT
-version: 0.1.0
-date-released: 2026-06-25
+version: 1.0.0
+date-released: 2026-10-12
+keywords:
+  - m6A
+  - N6-methyladenosine
+  - epitranscriptomics
+  - influenza A virus
+  - A549
+  - MeRIP microarray
+  - data descriptor

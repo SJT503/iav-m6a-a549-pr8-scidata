@@ -1,0 +1,13 @@
+sample,primer_set,control_type,supernatant_ct,merip_ct,pct_input
+MOCK_1,CTA650,negative,17.034,22.929,1.65
+MOCK_1,CTA850,positive,19.016,16.821,82.08
+MOCK_2,CTA650,negative,16.863,23.013,1.39
+MOCK_2,CTA850,positive,18.923,17.075,78.26
+MOCK_3,CTA650,negative,16.601,22.983,1.18
+MOCK_3,CTA850,positive,18.403,17.331,67.77
+PR8_1,CTA650,negative,16.892,22.650,1.81
+PR8_1,CTA850,positive,19.126,16.620,85.03
+PR8_2,CTA650,negative,17.297,22.803,2.15
+PR8_2,CTA850,positive,18.941,17.105,78.12
+PR8_3,CTA650,negative,16.516,23.478,0.80
+PR8_3,CTA850,positive,19.247,16.407,87.75

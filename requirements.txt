@@ -1,7 +1,0 @@
-numpy
-pandas
-openpyxl
-matplotlib
-python-docx
-pypandoc
-requests

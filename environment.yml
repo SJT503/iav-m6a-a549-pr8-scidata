@@ -1,0 +1,26 @@
+name: iav-m6a-a549-pr8-scidata
+# Environment used for the analyses, figures and tables of the Data Descriptor.
+# Created with:  conda env create -f environment.yml
+# The R packages are installed separately (see the r-base note at the bottom).
+channels:
+  - conda-forge
+dependencies:
+  - python=3.14.4
+  - numpy=2.4.4
+  - pandas=2.3.3
+  - scipy=1.16.3
+  - openpyxl=3.1.5
+  - matplotlib=3.10.9
+  - pillow=12.3.0
+  - python-docx=1.2.0
+  - pymupdf=1.27.2.3
+  - r-base=4.5.3
+  - r-limma=3.66.0
+  - r-jsonlite=2.0.0
+
+# Versions actually used to produce the released figures and tables:
+#   Python 3.14.4 | R 4.5.3 | limma 3.66.0 | jsonlite 2.0.0
+#
+# If conda cannot resolve r-limma at this version, install R 4.5.3 and then:
+#   Rscript -e 'install.packages("BiocManager"); BiocManager::install("limma")'
+#   Rscript -e 'install.packages("jsonlite")'
