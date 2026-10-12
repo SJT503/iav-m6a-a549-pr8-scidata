@@ -11,7 +11,7 @@ Reads only figdata/* (exported by 30_export_figdata.R) and the provider gel imag
 Every number drawn on a figure is computed here from the inputs and checked against figdata_summary.json; the script stops on any mismatch.
 Before saving, each figure passes (1) a text-text overlap check using the true (rotated) text outlines of drawn labels only and
 (2) a text-data check (no annotation or legend covers a plotted point).
-Usage: python fig_build_revised.py [1 2 3 4]   (default: all)"""
+Usage: python 40_figures.py [2 3 4]   (default: all). Figure 1, a schematic, is drawn by 41_figure1_schematic.py."""
 import os, sys, json, math
 import numpy as np
 import pandas as pd
@@ -235,76 +235,6 @@ def save(fig, base):
             os.remove(p)
         fig.savefig(p, dpi=300)
     print("[%s] saved (%.2f MB pdf, %.2f MB png)" % (base, os.path.getsize(OUT + base + ".pdf") / 1e6, os.path.getsize(OUT + base + ".png") / 1e6))
-
-
-# ------------------------------------------------------------------ Figure 1
-def figure1():
-    ip = pd.read_csv(D + "fig2d_ip_matrix.csv", index_col=0)
-    n_probes = ip.shape[0]
-    expect("probes", n_probes, 40955)
-    SHOWN["Figure 1"] = {"probes": n_probes}
-    fig = plt.figure(figsize=(180 * MM, 74 * MM))
-    ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 180); ax.set_ylim(0, 74); ax.axis("off")
-    boxes = []   # (text artist, x, y, w, h) for the text-inside-box check
-
-    def column(x, w, head):
-        ax.add_patch(FancyBboxPatch((x, 2), w, 70, boxstyle="round,pad=0,rounding_size=2.2", fc="#F2F2F2", ec="#BDBDBD", lw=0.6))
-        t = ax.text(x + w / 2, 67.6, head, ha="center", va="center", fontweight="bold")
-        boxes.append((t, x, 64, w, 7))
-
-    def box(x, y, w, h, text, ec="#9E9E9E", color=DARK, fc="white"):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=1.2", fc=fc, ec=ec, lw=0.6, zorder=2))
-        t = ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", color=color, linespacing=1.25, zorder=3)
-        boxes.append((t, x, y, w, h))
-
-    def arrow(x0, y0, x1, y1):
-        ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), arrowstyle="-|>", mutation_scale=6, lw=0.7, color="#616161",
-                                     shrinkA=0, shrinkB=0, zorder=4))
-
-    column(2, 38, "Cell model"); column(43, 52, "RNA and MeRIP"); column(98, 36, "Array"); column(137, 41, "Data records (GEO GSE336465)")
-    # cell model
-    box(5, 52, 32, 9, "A549 cells\n(ATCC CCL-185)")
-    box(11, 37, 26, 9.5, "Mock infection\nn = 3", ec=MOCK, color=MOCK)
-    box(11, 19, 26, 12, "IAV PR8 (H1N1)\nMOI 0.5, 24 h\nn = 3", ec=PR8, color=PR8)
-    arrow(24, 52, 24, 46.5)
-    ax.plot([7.5, 7.5, 10.1], [52, 25, 25], color="#616161", lw=0.7, zorder=4)
-    arrow(10.0, 25, 11, 25)
-    t = ax.text(21, 9.6, "Biological replicates:\nseparate passages\nand infection days", ha="center", va="center",
-                color="#555555", linespacing=1.2)
-    boxes.append((t, 3, 4, 36, 12))
-    # RNA and MeRIP
-    box(47, 54, 44, 7.5, "Total RNA (NanoDrop;\ndenaturing agarose gel)")
-    box(47, 43.5, 44, 7.5, "m6A spike-in controls\n(positive and negative)")
-    box(47, 33, 44, 7.5, "Anti-m6A immunoprecipitation")
-    box(47, 17.5, 21, 12, "IP\n(m6A-enriched\nfraction)")
-    box(70, 17.5, 21, 12, "Sup\n(non-IP\nfraction)")
-    box(47, 4.5, 44, 9.5, "Calibration spike-in added;\nlabelling: IP → Cy5, Sup → Cy3")
-    arrow(69, 54, 69, 51); arrow(69, 43.5, 69, 40.5); arrow(57.5, 33, 57.5, 29.5); arrow(80.5, 33, 80.5, 29.5)
-    arrow(57.5, 17.5, 57.5, 14); arrow(80.5, 17.5, 80.5, 14)
-    # array
-    box(101, 47, 30, 12, "Two-colour\nco-hybridisation\n(65 °C, 17 h)")
-    box(101, 26, 30, 15.5, "Arraystar Human\nmRNA&lncRNA\nEpitranscriptomic\nMicroarray (8×60K)")
-    box(101, 6.5, 30, 13.5, "Agilent G2505C\nscanner; Feature\nExtraction v11.0.1.1")
-    arrow(116, 47, 116, 41.5); arrow(116, 26, 116, 20)
-    # data records
-    box(140, 54, 35, 7.5, "6 raw Feature\nExtraction files")
-    box(140, 42.5, 35, 8.5, "Normalised matrix:\n%s probes × 12 channels" % fmt_int(n_probes))
-    box(140, 20.5, 35, 18.5, "m6A quantity = IP\nExpression = Sup\n%modified =\n100 × IP/(IP + Sup)", fc="#FAFAFA")
-    box(140, 5.5, 35, 11, "Provider tables (mRNA,\nlncRNA, other ncRNA)")
-    arrow(40.5, 37, 42.5, 37); arrow(95.5, 37, 97.5, 37); arrow(134.5, 37, 136.5, 37)
-    # text-inside-box check (data units; 0.8 unit margin)
-    fig.canvas.draw(); r = fig.canvas.get_renderer(); inv = ax.transData.inverted(); bad = []
-    for t, x, y, w, h in boxes:
-        bb = t.get_window_extent(r); (x0, y0), (x1, y1) = inv.transform([(bb.x0, bb.y0), (bb.x1, bb.y1)])
-        if x0 < x + 0.8 or x1 > x + w - 0.8 or y0 < y + 0.4 or y1 > y + h - 0.4:
-            bad.append("%r spills out of its box" % t.get_text().split("\n")[0])
-    print("[Figure 1] text-inside-box check: %s" % ("PASS" if not bad else "FAIL"))
-    for b in bad:
-        print("     ", b)
-    ok = check(fig, "Figure 1") and not bad
-    save(fig, "Figure1_design")
-    plt.close(fig)
-    return ok
 
 
 # ------------------------------------------------------------------ Figure 2
@@ -616,7 +546,7 @@ def figure4():
 
 
 if __name__ == "__main__":
-    which = sys.argv[1:] or ["1", "2", "3", "4"]
+    which = sys.argv[1:] or ["2", "3", "4"]
     res = {}
     for w in which:
         res["Figure " + w] = globals()["figure" + w]()

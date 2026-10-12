@@ -3,6 +3,10 @@
 generated outputs and the GEO inputs, which have their own checksum manifests).
 
     python tools/make_manifest.py
+
+Text files are hashed with LF line endings, which is how they are stored in git and (through
+.gitattributes) how they are checked out on every platform, so that `md5sum -c MANIFEST.md5`
+passes on any clone.
 """
 import hashlib, os
 
@@ -16,8 +20,7 @@ OUT = os.path.join(REL, "MANIFEST.md5")
 def md5(path):
     h = hashlib.md5()
     with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(1 << 20), b""):
-            h.update(chunk)
+        h.update(f.read().replace(b"\r\n", b"\n"))
     return h.hexdigest()
 
 

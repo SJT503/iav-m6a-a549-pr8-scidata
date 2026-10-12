@@ -31,6 +31,7 @@ STAGES=(
   "21_isg_detection.py"
   "30_export_figdata.R"
   "40_figures.py"
+  "41_figure1_schematic.py"
   "50_table4_data.py"
   "60_build_tables.py"
   "61_build_table_docx.py"

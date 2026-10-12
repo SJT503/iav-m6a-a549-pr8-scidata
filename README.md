@@ -59,7 +59,7 @@ cd data && md5sum -c raw_md5.txt && md5sum -c processed_md5.txt
 
 `data/qc_evidence/` holds four provider quality-control reports (NanoDrop quantification,
 spike-in qPCR, the Agilent labelling report and the RNA gel image). They are **not** part of
-the GEO deposit; they are shipped here because Figure 1d and Table 2 are built from them.
+the GEO deposit; they are shipped here because Figure 2a and Table 2 are built from them.
 
 ## 3. Configure
 

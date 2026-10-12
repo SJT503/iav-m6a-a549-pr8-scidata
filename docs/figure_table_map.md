@@ -6,8 +6,8 @@ files deposited in GEO (GSE336465) plus the provider quality-control reports in
 
 | Output | Script(s) | Input | Notes |
 |---|---|---|---|
-| **Figure 1** — study design | `40_figures.py` | `data/qc_evidence/RNA_QC_gel_image_original.jpeg`, `data/raw/*.txt`, `data/processed/*.xlsx` | panel a drawn in code; panel d uses the provider's RNA gel |
-| **Figure 2** — array and replicate quality | `30_export_figdata.R` → `40_figures.py` | `data/raw/Matrix.xlsx`, FE files | PCA is a standard centred PCA (`prcomp`) on the 40,955 probes |
+| **Figure 1** — study design and data workflow | `41_figure1_schematic.py` | `figdata/fig2d_ip_matrix.csv` (probe count only) | schematic drawn entirely in code (matplotlib primitives and text); contains no raster or generated artwork |
+| **Figure 2** — array and replicate quality | `30_export_figdata.R` → `40_figures.py` | `data/raw/Matrix.xlsx`, FE files, `data/qc_evidence/RNA_QC_gel_image_original.jpeg` | panel a is the provider's RNA gel; PCA is a standard centred PCA (`prcomp`) on the 40,955 probes |
 | **Figure 3** — m6A quantity and expression | `10_limma.R`, `30_export_figdata.R` → `40_figures.py` | `data/raw/Matrix.xlsx` | limma + Benjamini–Hochberg, deposited normalisation |
 | **Figure 4** — methylation fraction (%modified) | `12_detection_flags.py`, `13_pctmod_detected.R`, `30_export_figdata.R` → `40_figures.py` | FE files, `data/raw/Matrix.xlsx` | restricted to probes with a Sup signal above background on all six arrays |
 | **Table 1** — data records, sizes and MD5 | `61_build_table_docx.py` | `data/raw_md5.txt`, `data/processed_md5.txt`, the deposited files themselves | checksums recomputed and compared against the manifest |
@@ -32,7 +32,8 @@ files deposited in GEO (GSE336465) plus the provider quality-control reports in
 | 20 | `20_pca_standard.R` | standard centred PCA (IP and Sup) | cache |
 | 21 | `21_isg_detection.py` | detection status of the interferon transcripts in both channels | FE files, map |
 | 30 | `30_export_figdata.R` | one small CSV per figure panel group | results, cache |
-| 40 | `40_figures.py` | renders Figures 1–4 (PDF + PNG, 300 dpi) | figdata |
+| 40 | `40_figures.py` | renders Figures 2–4 (PDF + PNG, 300 dpi) | figdata |
+| 41 | `41_figure1_schematic.py` | draws Figure 1, the study-design schematic (PDF + PNG, 300 dpi) | figdata (probe count) |
 | 50 | `50_table4_data.py` | Table 4 values, one probe per gene | figdata, FE files |
 | 60 | `60_build_tables.py` | Supplementary Table 1 (xlsx) and the data for Tables 2–3 | results, cache, QC reports |
 | 61 | `61_build_table_docx.py` | Table 1–4 as Word files | results, data root |

@@ -17,7 +17,7 @@ tables/
 run_all.log
 
 # Keep the provider QC reports and the checksum manifests: they are small and are
-# needed to reproduce Figure 1d, Table 1 and Table 2.
+# needed to reproduce Figure 2a, Table 1 and Table 2.
 !data/qc_evidence/
 !data/*_md5.txt
 
