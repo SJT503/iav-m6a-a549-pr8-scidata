@@ -10,7 +10,7 @@ b33028718be31d586964281cf04e4bc9  config/config.ini
 19856de62ed0c57724e605d7befd60fa  data/processed_md5.txt
 260fe360fe7b5cb694d7b0c34be0dc62  data/raw_md5.txt
 984fe2ed1e9be376d5c32e235b43f03a  docs/figure_table_map.md
-2f78052a15262ffcd8e37da29e9f62c7  docs/manuscript_text.md
+77e5e1fbbc6c6b845d37c530be939136  docs/manuscript_text.md
 ccc2952112eaf790bca13cee29cb350d  metadata/sample_metadata.csv
 a52402a20f6542d63738d6bccbbd58bf  scripts/00_prepare_inputs.py
 a9e41ea42ccf42db2ea7e7f34afd45f5  scripts/01_prepare_inputs_large.py
