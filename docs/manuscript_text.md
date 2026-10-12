@@ -6,7 +6,7 @@
  - "### [P n] ..." = paragraph n of the original docx (see 07_revision/_manuscript_dump.txt) and what to do with it.
  - All numbers come from revision_2026/results (scripts 10-123) and the provider QC reports; references marked [NEW] are PubMed/Crossref-verified.
  - Citation numbers are written as [ref:key] here and renumbered by order of first citation at build time.
- - Figure plan: Fig 1 design (text-only legend fix); Fig 2 quality = a gel, b standard PCA, c correlation matrix, d six within-condition scatters,
+ - Figure plan: Fig 1 = study-design schematic redrawn in code (scripts/41_figure1_schematic.py), corrected legend; Fig 2 quality = a gel, b standard PCA, c correlation matrix, d six within-condition scatters,
    e signal distributions; Fig 3 = a volcano (limma), b annotation-based region distribution vs all profiled mRNAs, c top probes by transcript ID,
    d m6A machinery (old Supp Fig 1a), e lncRNA volcano (old Supp Fig 3); Fig 4 = a Delta%modified vs expression change (detected probes),
    b %modified volcano (limma, logit). Old Supp Figs 1b/2 (GO/KEGG) removed.
@@ -103,8 +103,7 @@ Recommended practice for reuse. Users are advised to start from the normalised p
 The data are available from the NCBI Gene Expression Omnibus under accession GSE336465 (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE336465).
 
 ### [P63] Code Availability — replace
-Code that reproduces the analyses, figures and tables in this Data Descriptor from the files deposited in GEO (GSE336465) is available at https://github.com/SJT503/iav-m6a-a549-pr8-scidata and archived on Zenodo (https://doi.org/10.5281/zenodo.20834152). Normalisation and probe filtering were performed by the array-service provider and are not reimplemented in the code.
-<!-- TO-DO: confirm once the repository release exists (Reviewer 1, 1.11; Reviewer 2, 2.9). -->
+Code that reproduces the analyses, figures and tables in this Data Descriptor from the files deposited in GEO (GSE336465) is available at https://github.com/SJT503/iav-m6a-a549-pr8-scidata (release v1.0.1). Normalisation and probe filtering were performed by the array-service provider and are not reimplemented in the code.
 
 ### [P65] Acknowledgements — replace first sentence
 The authors thank Aksomics (Shanghai, China) for performing the immunoprecipitation, labelling, hybridisation, scanning and primary data processing.
