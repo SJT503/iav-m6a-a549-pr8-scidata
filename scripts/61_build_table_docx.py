@@ -12,7 +12,8 @@ footnote 8 pt). All values are read from source files; nothing is typed by hand.
 Output: the tables directory set in config/config.ini (existing files are never overwritten)."""
 import os, csv, json, hashlib, math
 import docx
-from docx.shared import Pt
+from docx.shared import Pt, Cm
+from docx.enum.section import WD_ORIENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -57,7 +58,7 @@ def run(par, text, size, bold=False, italic=False):
     return r
 
 
-def build(fname, title, header, rows, footnotes, align_right_from=None, col_widths=None):
+def build(fname, title, header, rows, footnotes, align_right_from=None, col_widths=None, landscape=False):
     path = OUT + fname
     if os.path.exists(path):
         print("[skip] %s exists — not overwritten" % fname)
@@ -65,6 +66,10 @@ def build(fname, title, header, rows, footnotes, align_right_from=None, col_widt
     d = docx.Document()
     sec = d.sections[0]
     sec.left_margin = sec.right_margin = 1143000
+    if landscape:                      # a wide table: landscape page, narrower side margins
+        sec.orientation = WD_ORIENT.LANDSCAPE
+        sec.page_width, sec.page_height = sec.page_height, sec.page_width
+        sec.left_margin = sec.right_margin = Cm(1.2)
     p = d.add_paragraph(); run(p, title, 10, bold=True)
     t = d.add_table(rows=len(rows) + 1, cols=len(header))
     t.alignment = 1
@@ -75,13 +80,16 @@ def build(fname, title, header, rows, footnotes, align_right_from=None, col_widt
     for i, row in enumerate(rows, 1):
         for j, v in enumerate(row):
             c = t.rows[i].cells[j]; c.text = ""
+            c.paragraphs[0].paragraph_format.space_after = Pt(2); c.paragraphs[0].paragraph_format.line_spacing = 1.0
             run(c.paragraphs[0], str(v), 9)
             if align_right_from is not None and j >= align_right_from:
                 c.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
             if i == len(rows):
                 border(c, bottom=8)
     if col_widths:
+        t.autofit = False              # without this Word keeps equal column widths and ignores the cell widths
         for j, w in enumerate(col_widths):
+            t.columns[j].width = w
             for r_ in t.rows:
                 r_.cells[j].width = w
     for fn in footnotes:
@@ -124,7 +132,8 @@ build("Table1_data_records.docx", "Table 1. Data records deposited in GEO (GSE33
       ["Sample", "Accession", "File in GEO", "Content", "Size (bytes)", "MD5"], rows1,
       ["Sizes and MD5 checksums are those of the files as uploaded (the six Feature Extraction files are stored by GEO in gzip-compressed form). "
        "A README describing the files is also deposited with the Series. Provider tables use the MOCK-versus-PR8 convention (fold change = mock/PR8; see Usage Notes)."],
-      align_right_from=4)
+      align_right_from=4, landscape=True,
+      col_widths=[Cm(1.8), Cm(2.2), Cm(8.2), Cm(5.4), Cm(2.0), Cm(5.7)])
 REPORT.append(("Table 1", len(rows1)))
 
 # ---------------- Table 2: per-sample QC ----------------

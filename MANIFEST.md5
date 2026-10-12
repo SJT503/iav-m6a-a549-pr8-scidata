@@ -28,7 +28,7 @@ c54fe7432d76d1552bbcfb7091ff9279  scripts/20_pca_standard.R
 342127c7ac4ddf5e00ff869385777f9e  scripts/41_figure1_schematic.py
 45fa9835b1ef196b838c839b9af93e52  scripts/50_table4_data.py
 1516712b8ca53717f4d046a4db1afda7  scripts/60_build_tables.py
-c1d6b26634ee4d1f538d685c1f39cb5b  scripts/61_build_table_docx.py
+b417de5fe713bb3c4fcbef19654e77f1  scripts/61_build_table_docx.py
 fb9440a8189449da3b970d4b5390bea5  scripts/70_check_numbers.py
 2d74595aa60a0cc38fcc2589878ec4e1  scripts/_config.R
 903208c2da135d1559f62347c22bce09  scripts/_config.py
