@@ -21,6 +21,7 @@ archive (see `CITATION.cff`).
 | Python | 3.14.4 — numpy, pandas, scipy, openpyxl, matplotlib, Pillow, python-docx, PyMuPDF |
 | R | 4.5.3 — limma (3.66.0), jsonlite (2.0.0) |
 | Data | the GEO deposit (see step 2) |
+| Contact | Jiangtao Sheng, jtsheng@stu.edu.cn |
 
 ```bash
 conda env create -f environment.yml     # or install the packages listed in environment.yml
